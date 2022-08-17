@@ -25,3 +25,7 @@
 ::1 - - [17/Aug/2022:10:53:57 +0000] "OPTIONS /goals HTTP/1.1" 200 13 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ::1 - - [17/Aug/2022:10:53:57 +0000] "POST /goals HTTP/1.1" 201 81 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ::1 - - [17/Aug/2022:10:53:59 +0000] "GET /goals HTTP/1.1" 200 187 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [17/Aug/2022:12:12:06 +0000] "GET /goals HTTP/1.1" 200 12 "-" "insomnia/2022.5.0"
+::ffff:127.0.0.1 - - [17/Aug/2022:12:12:10 +0000] "POST /goals HTTP/1.1" 201 98 "-" "insomnia/2022.5.0"
+::ffff:127.0.0.1 - - [17/Aug/2022:12:12:12 +0000] "GET /goals HTTP/1.1" 200 78 "-" "insomnia/2022.5.0"
+::ffff:127.0.0.1 - - [17/Aug/2022:12:12:46 +0000] "GET /goals HTTP/1.1" 200 78 "-" "insomnia/2022.5.0"

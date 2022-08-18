@@ -1,0 +1,66 @@
+# docker-compose specification version
+version: "3.8"
+services:
+  mongo-server:
+    # optional, if we want custom container name
+    container_name: mongo-server
+    image: 'mongo'
+    volumes:
+      - mongo-data:/data/db
+    #environment:
+      #MONGO_INITDB_ROOT_USERNAME: max
+      #- MONGO_INITDB_ROOT_USERNAME=max
+      #- MONGO_INITDB_ROOT_PASSWORD=secret
+    #env_file:
+      #- ./env/path/.env
+    # networks is optional
+    #networks:
+      #- goals-net
+  backend:
+    # optional, if we want custom container name
+    container_name: goals-backend
+
+    # use image if we have docker
+    # image: 'komangkrisnanda/goals-node-app'
+
+    # only re-build if image not exists or something changed on image
+    build: ./backend
+    # other ways
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    #   args:
+    #     some-arg: 1
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs # named volumne
+      - ./backend:/app # bind volume
+      - /app/node_modules # anonymous volume
+    #env_file:
+      #- ./env/path/.env
+    depends_on:
+      - mongo-server
+
+      
+  frontend:
+    # optional, if we want custom container name
+    container_name: goals-frontend
+    # only re-build if image not exists or something changed on image
+    build:
+      context: ./frontend
+    ports:
+      - '3000:3000'
+    environment:
+      - REACT_APP_API_URL=http://localhost
+    #image: 'komangkrisnanda/goals-react-app'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - goals-frontend
+
+# this required if we define 'volumes' on specific services.
+# this is used only for named volumes
+volumes:
+  mongo-data:
+  logs:
